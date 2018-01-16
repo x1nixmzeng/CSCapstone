@@ -61,36 +61,6 @@ namespace CSCapstone
             }
         }
 
-        /// <summary>Get Instruction's ARM64 Detail.</summary>
-        public NativeArm64InstructionDetail NativeArm64Detail {
-            get {
-                var pDetail = CapstoneProxyImport.Arm64Detail(this.IndependentDetail);
-                var detail = MarshalExtension.PtrToStructure<NativeArm64InstructionDetail>(pDetail);
-
-                return detail;
-            }
-        }
-
-        /// <summary>Get Instruction's ARM Detail.</summary>
-        public NativeArmInstructionDetail NativeArmDetail {
-            get {
-                var pDetail = CapstoneProxyImport.ArmDetail(this.IndependentDetail);
-                var detail = MarshalExtension.PtrToStructure<NativeArmInstructionDetail>(pDetail);
-
-                return detail;
-            }
-        }
-
-        /// <summary>Get Instruction's X86 Detail.</summary>
-        public NativeX86InstructionDetail NativeX86Detail {
-            get {
-                var pDetail = CapstoneProxyImport.X86Detail(this.IndependentDetail);
-                var detail = MarshalExtension.PtrToStructure<NativeX86InstructionDetail>(pDetail);
-
-                return detail;
-            }
-        }
-
         /// <summary>Create a managed representation of a native instruction from
         /// the given native buffer.</summary>
         /// <param name="from">Native data to be decoded. On return the native data
