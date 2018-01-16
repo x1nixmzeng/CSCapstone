@@ -16,19 +16,11 @@
         /// <returns>A dissembled instruction.</returns>
         protected override Instruction<X86Instruction, X86Register, X86InstructionGroup, X86InstructionDetail> CreateInstruction(NativeInstruction nativeInstruction)
         {
-            var result = nativeInstruction.AsX86Instruction();
+            var @object = nativeInstruction.AsX86Instruction();
+            
+            // x1nix: removed NativeInstruction lookup
 
-            // Get Native Instruction's Managed Independent Detail.
-            //
-            // Retrieves the native instruction's managed independent detail once to avoid having to allocate
-            // new memory every time it is retrieved.
-            var nativeIndependentInstructionDetail = nativeInstruction.ManagedIndependentDetail;
-            if (nativeIndependentInstructionDetail != null) {
-                result.ArchitectureDetail = nativeInstruction.NativeX86Detail.AsX86InstructionDetail();
-                result.IndependentDetail = nativeIndependentInstructionDetail.Value.AsX86IndependentInstructionDetail();
-            }
-
-            return result;
+            return @object;
         }
     }
 }
